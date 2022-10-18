@@ -1,28 +1,29 @@
-//Domain name
+//Sum Mixed Array
 
 /*Instructions
-Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
 
-domainName("http://github.com/carbonfive/raygun") == "github" 
-domainName("http://www.zombie-bites.com") == "zombie-bites"
-domainName("https://www.cnet.com") == "cnet"
+Return your answer as a number.
+
+assert.strictEqual(sumMix([9, 3, '7', '3']), 22);
+assert.strictEqual(sumMix(['5', '0', 9, 3, 2, 1, '9', 6, 7]), 42); 
+assert.strictEqual(sumMix(['3', 6, 6, 0, '5', 8, 5, '6', 2,'0']), 41); 
 */
 
-//string, will have special characters, could have numbers
-//return just the domain name
+//array of strings and nums
+//return sum of all nums, with strings converted to nums
 
-//replace "http://" with ""
-//split remaining string with '.' as separator
-//get rid of second element in array
-//join string back together
+//change strings to numbers
+//sum all nums
+//return the sum
 
-function domainName(url){
-  let name = url.replace("http://www.", "").replace("http://", "").replace("https://www.", "").replace("https://", "").replace("www.", "").split('.')
-  return name[0]
+function sumMix(x){
+  const sum = x.map(el => Number(el)).reduce(
+  (previousValue, currentValue) => previousValue + currentValue, 0)
+  return sum
 }
 
 //better
-function domainName(url){
-  let name = url.replace("http://", "").replace("https://", "").replace("www.", "").split('.')
-  return name[0]
+function sumMix(x){
+  return x.reduce((a,c) => a + Number(c), 0)
 }
